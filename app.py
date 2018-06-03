@@ -2,7 +2,8 @@
 import random
 from flask import Flask, request
 from pymessenger.bot import Bot
-import os 
+import os
+import classify
 app = Flask(__name__)
 ACCESS_TOKEN = 'EAAB3ozsRqCYBAEwiG866axjPCQbyRTrRK24juJnYid5sqyjapqELqCIwQZAP9ApJqXFAOuLrb0cREVOuAfRZBnCadVcXkDKCvJHdcPfe1HzLy9tbnLZAwZCv2IwJ5ddjHXxIagx73X6ZBPvD6MMnv9WWpH0ZAGRaaOkrLYCZCtE6gZDZD'   #ACCESS_TOKEN = os.environ['ACCESS_TOKEN']
 VERIFY_TOKEN = 'VERIFY_TOKEN'   #VERIFY_TOKEN = os.environ['VERIFY_TOKEN']
@@ -27,11 +28,11 @@ def receive_message():
                 #Facebook Messenger ID for user so we know where to send response back to
                 recipient_id = message['sender']['id']
                 if message['message'].get('text'):
-                    response_sent_text = get_message()
+                    response_sent_text = get_message(message['message'])
                     send_message(recipient_id, response_sent_text)
                 #if user sends us a GIF, photo,video, or any other non-text item
                 if message['message'].get('attachments'):
-                    response_sent_nontext = get_message()
+                    response_sent_nontext = get_message(message['message'])
                     send_message(recipient_id, response_sent_nontext)
     return "Message Processed"
 
@@ -45,10 +46,16 @@ def verify_fb_token(token_sent):
 
 
 #chooses a random message to send to the user
-def get_message():
-    sample_responses = ["You are stunning!", "We're proud of you.", "Keep on being you!", "We're greatful to know you :)"]
-    # return selected item to the user
-    return random.choice(sample_responses)
+def get_message(msg):
+    response = classify.classification(msg)
+    if response == 'hi':
+        sample_responses = ["Hi!", "Nice to see you", "Hey dear :)", "Good to see you :)"]
+        # return selected item to the user
+        return random.choice(sample_responses)
+    elif response == 'weather':
+        sample_responses = ["Calm air", "Wind", "Cloudy", "Cold weather", "Warm weather", "Rainy", "Hot weather"]
+        # return selected item to the user
+        return random.choice(sample_responses)
 
 #uses PyMessenger to send response to user
 def send_message(recipient_id, response):
