@@ -1,10 +1,9 @@
-#Python libraries that we need to import for our bot
 import random
 from flask import Flask, request
 from pymessenger.bot import Bot
-import os
+import os 
 app = Flask(__name__)
-ACCESS_TOKEN = 'EAAB3ozsRqCYBAIKhWmiZAZA56qrFLf8Ceo5d8TcgFPT9XeYdNJaTGCTDvDVbCoTHg5pHgkRhhQYIZAGliY3R0VT3ZAELgixoBOFO6E5mf36mZAjnH9Mh2JY2JL5jwdA1k0h0grn841DAUac2EDkW1H6OUVmgXynUZBHSY6NddEHgZDZD'   #ACCESS_TOKEN = os.environ['ACCESS_TOKEN']
+ACCESS_TOKEN = 'EAADBkvb3F4wBAF41Jjusjw4ZAjLjRdBiKEItHXqAZCZBZCgWfqgCgLQZAG1apMrfzNzjcjdn8llq6PxgJ7ZCOPJd4X7eZCJt197ZBbQAi0PdBchOZBOdvhGieYo4KO0mrdwHXCMOIIZBndNi8ZCZBBaC0EhYFyrP81T1QyxM9YIuDsg93gZDZD'   #ACCESS_TOKEN = os.environ['ACCESS_TOKEN']
 VERIFY_TOKEN = 'VERIFY_TOKEN'   #VERIFY_TOKEN = os.environ['VERIFY_TOKEN']
 bot = Bot (ACCESS_TOKEN)
 
@@ -45,11 +44,10 @@ def verify_fb_token(token_sent):
 
 
 #chooses a random message to send to the user
-def get_message(msg):
-    sample_responses = ["Hi!", "Nice to see you", "Hey dear :)", "Good to see you :)"]
+def get_message():
+    sample_responses = ["You are stunning!", "We're proud of you.", "Keep on being you!", "We're greatful to know you :)"]
     # return selected item to the user
     return random.choice(sample_responses)
-
 
 #uses PyMessenger to send response to user
 def send_message(recipient_id, response):
