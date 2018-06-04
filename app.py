@@ -3,7 +3,6 @@ import random
 from flask import Flask, request
 from pymessenger.bot import Bot
 import os
-import classify
 app = Flask(__name__)
 ACCESS_TOKEN = 'EAAB3ozsRqCYBAPKGVqdHr36r3TIiXqkHl5RCBZBlrcRRAd7fwPTOyXm701XfDzm1DeQOik3S7vZBPod1D2Yyd0UK3CTc1h4uy43zqswU6h06VuCWNJc06nfuBn963ZC3xAHbLn7yLZAi9ZBv7WBmNN3O9CLxxZBn90ljFBqr6mmAZDZD'   #ACCESS_TOKEN = os.environ['ACCESS_TOKEN']
 VERIFY_TOKEN = 'VERIFY_TOKEN'   #VERIFY_TOKEN = os.environ['VERIFY_TOKEN']
