@@ -11,7 +11,7 @@ from sklearn.feature_extraction.text import TfidfTransformer
 from sklearn.naive_bayes import MultinomialNB
 
 app = Flask(__name__)
-ACCESS_TOKEN = 'EAADBkvb3F4wBALo3ZBAJmnFEqaq3JkG9Ruuxt0psgvhZAK5BPksdQHL3MOZAwehzaIrFwb13HZBmg31rLmVyx2CpAgRZARjXa2GWXAPYt58eZASZBfzHKii2NYjusBMvys2isNtWyOWu3zr2NxDotBgcZAMpD79BN2xG0Goui2zEiwZDZD'
+ACCESS_TOKEN = 'EAADBkvb3F4wBAN0UN8oLZAbiVRtmuqZBCWezIpgG3SGwxI1NZB3f6rp0hT0B8YLn5PwJ2rzYQ9ZBbln7ZCCfz90ZCgt8KsX421J0VQp9WfvUQs9rG6W6df16ZAUPlyGVfPgMZAjSeb2fcJoEyzlXvQCnxALvHAu66Lho5EQMFD2X2QZDZD'
 VERIFY_TOKEN = 'VERIFY_TOKEN'
 bot = Bot (ACCESS_TOKEN)
 
